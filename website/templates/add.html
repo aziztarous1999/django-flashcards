@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block 'content' %}
+<center>
+
+{% if my_anwser %}
+<div class="alert alert-{{color}} alert-dismissible fade show" role="alert">
+  {{ my_anwser }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endif %}
+
+            
+            <h1><img src="static/images/{{ num_1 }}.png" style="width:250px;height:350px"/> + <img src="static/images/{{ num_2 }}.png" style="width:250px;height:350px"/> </h1>
+</center>
+    <form action="{% url 'add' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        </br></br>
+          <input type="test" class="form-control" placeholder="Type Your Anwser Here" name="anwser"/>
+
+          <input type="hidden" value="{{ num_1 }}"   name="old_num_1"/>
+
+          <input type="hidden" value="{{ num_2 }}"  name="old_num_2"/>
+        </div>
+    </br>
+        <button type="submit" class="btn btn-secondary">Submit</button>
+      </form>
+
+{% endblock %}
